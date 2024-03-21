@@ -1,6 +1,7 @@
 package com.rouvsen.springsecutiryjwttoken.service;
 
 import com.rouvsen.springsecutiryjwttoken.dto.CreateUserRequest;
+import com.rouvsen.springsecutiryjwttoken.model.Role;
 import com.rouvsen.springsecutiryjwttoken.model.User;
 import com.rouvsen.springsecutiryjwttoken.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -31,7 +33,7 @@ public class UserService implements UserDetailsService {
                         .name(request.name())
                         .username(request.username())
                         .password(passwordEncoder.encode(request.password()))
-                        .authorities(request.authorities())
+                        .authorities(Set.of(Role.ROLE_USER))
                         .accountNonExpired(true)
                         .accountNonLocked(true)
                         .credentialsNonExpired(true)
