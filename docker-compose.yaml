@@ -1,0 +1,14 @@
+version: '3.0'
+
+services:
+  db:
+    image: mysql
+    container_name: mysql_container
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_DATABASE: security-db
+      MYSQL_USER: rouvsen
+      MYSQL_PASSWORD: 112233
+    ports:
+      - '3306:3306'
